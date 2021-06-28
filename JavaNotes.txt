@@ -1,0 +1,26 @@
+Tips:
+-use classes and Java API instead of writing your own code
+-Error /0
+-Start of every program: objective, author, date
+
+
+Concepts:
+Java programs have five steps: editing, compiling, loading, checking and running
+Print variables:
+	System.out.println("Value %d ",var);
+import java.bib.class
+Packages Java API:
+	-java.applet:polymorphism
+	-java.awt:GUI
+	-java.io:2D
+	-java.net:Network
+	-java.sql:JDBC databases
+	-java.text:strings, dates
+	-java.util: process, random ...
+	-javax.media: applets and apps
+	-javax.swing:GUI
+	-javax.xml: web services
+Overload: same declaration with diferent parameters
+Research after:
+UML
+Javadoc

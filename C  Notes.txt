@@ -1,0 +1,114 @@
+INTRODUÇÃO ---------------------------------------------------------------------------
+#include <cstdlib>
+#include <string>
+#include <iostream>
+
+using namespace std;
+class Carro{
+	public:
+		string marca;
+		int ano;
+		string cor;
+};
+
+int mai(int argc, char** argv) {
+
+	Carro c1;
+	c1.marca = "Fiat";
+	c1.ano = 2017;
+	c1.cor = "Branco";
+	Carro c2;
+	c2.marca = "Ferrari";
+	c2.ano = 2015;
+
+	cout << c1.marca << endl;
+	cout << c2.marca << endl;
+
+	return 0;
+}
+
+ctrl shift f --> organiza o codigo
+ctrl f9 --> compila
+ctrl j --> abre o main
+__________________________________________________________________________________
+transformar int pra float:
+int variavel;
+....
+a = (float)variavel/2;
+SE
+char variavel;
+...
+cout << (int)variavel; --> Mostra o numero decimal referente na tabela ASCI
+se declarar como bool e a condição for falsa imprime 0, contrario 1
+__________________________________________________________________________________
+cout --> printf
+cin --> scanf
+	cout<<insira tal
+	cin>>variavel;
+ou
+cout << "numero: " << variavel << end1;
+__________________________________________________________________________________
+while..
+	if(algo que nao quer que apareça){
+		n++;
+		continue;
+__________________________________________________________________________________
+for(parte1;parte2;parte3){
+ 	faça algo aqui;
+}
+parte 1 --> executada uma vez(inicializar a variavel)
+parte2 --> condição
+parte3 --> incremento
+__________________________________________________________________________________
+funções:
+bool nomeDaFuncao(int parametro)
+{
+	if(condicao)
+		return true;
+	return false;
+}
+tipo void --> nao retorna nada
+}
+
+__________________________________________________________________________________
+FINALIZAR STRING COM \0
+char nome[] = "melyssa";
+srtlen() --> tamanho da string
+isalpha() --> diz se o caracter é alfabetico
+is digit() --> diz se é numero
+isupper() --> verifica se a letra é maiuscula
+islower() --> verifica se a letra é minuscula
+isspace() --> verifica se é um espaço
+strcmp() --> compara 2 strings(retorna 0 se vdd)
+tolower(variavel) --> retorna a letra em minusculo
+toupper(variavel) --> retorna a letra maiuscula
+strcat(nome, sobrenome); --> junta duas strings (concatena)
+strstr(str1, str2)) --> verifica se o str2 é substring
+__________________________________________________________________________________
+PONTEIROS
+tipo* nome_ponteiro;
+nome-ponteiro = &variavelQueQuerGuardar
+cout << *nome_ponteiro << endl; --> imprime
+*nome_ponteiro = valor;
+int* vet = new int[10]; ou int aux[10]--> aloca 10 espaços para 10 inteiros.
+*(vet + 0) = 10; ou aux[0] = 20;
+sizeof(aux) --> tamanho vetor 4 bit vezes a quantidade
+sizeof(int) --> quantidade de numeros
+delete[] nomeVetor --> limpar um array
+nomeVetor = NULL; --> apaga o ponteiro
+__________________________________________________________________________________
+CONSTANTE
+const float pi = 3,14;
+_____________________________---
+STRUCT
+typedef struct pessoa{
+	char  nome[10]
+	int idade
+}t_pessoa
+
+
+t_pessoa p;
+p.idade = 20;
+Quando for ponteiro:
+t_pessoa* p;
+p->idade = 20;

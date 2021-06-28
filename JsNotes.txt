@@ -1,0 +1,21 @@
+//comentários E /* */
+PARTE 1 JAVASCRIPT BÁSICA
+Capítulo 2, Estrutura léxica
+	A estrutura léxica de uma linguagem de programação é o conjunto de regras elementares que especificam o modo de escrever programas nessa linguagem.
+Capítulo 3, Tipos, valores e variáveis
+Tipos Primitivos:incluem números, sequências de texto (conhecidas como strings) e
+valores de verdade (conhecidos como booleanos)
+Tipos de Objeto:Qualquer valor em JavaScript que não seja número, string, booleano, null ou undefined é um objeto.
+JavaScript não faz distinção entre valores inteiros e valores
+em ponto flutuante.
++ barra invertida (\) em strings: representa um caractere que não pode ser representado de outra
+forma dentro da string
+Capítulo 4, Expressões e operadores
+Capítulo 5, Instruções
+Capítulo 6, Objetos
+Capítulo 7, Arrays
+Capítulo 8, Funções
+Capítulo 9, Classes e módulos
+Capítulo 10, Comparação de padrões com expressões regulares
+Capítulo 11, Subconjuntos e extensões de JavaScript
+Capítulo 12, JavaScript do lado do servidor

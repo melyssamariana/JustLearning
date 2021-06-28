@@ -1,0 +1,340 @@
+CONSTANTE:
+const int n = 10; --> valor não pode ser alterado depois
+#define n 10 
+
+OPERADOR TERNÁRIO: (?)é tipicamente utilizado para fazer atribuições condicionais.
+variavel = condicao ? expressao1 : expressao2; (se V expressao1, se F expressao2)
+funciona tbm sem variavel.
+
+SWITCH: variavel somente char ou int.
+
+FOR(inicialização;condição;incremento)
+
+comando BREAK: --> sai da repetição
+
+comando CONTINUE: --> interrompe a repetição atual de qualquer comando de laço, e passa para a próxima repetição.(volta para o começo da repetição)
+
+comando GOTO: --> volta para determinado ponto do código (EVITAR)
+EX:
+...
+inicio
+...
+goto inicio;
+
+STRING.H:
+strlen tamanho da string
+strcpy copiar uma string --> strcpy(novapalavra,palavra)
+strcat concatenar duas strings -->strcat(palavracomeço,palavrafinal)
+strcmp comparar duas strings
+
+
+STRUCT: É um tipo de dado
+struct nome_struct{
+	tipo1 nome1;
+	tipo2 nome2;
+	...
+	tipoN nomeN;
+	};
+no main: struct nome_struct ns;  ou struct pessoa p1,p2,p3; ou struct pessoa p[4];
+ns.nome1 = 12;
+gets(ns.nome1); -->comando de leitura
+strcpy(p.nome,"Melyssa");
+
+
+ANINHAMENTO DE STRUCTS:
+struct endereco{...};
+struct pessoa{
+	...
+	struct endereco e;	
+} No main: p.e.numero = 101;
+
+UNION:
+-->Utilizada para economizar memória. Quando duas variáveis nunca são usadas ao mesmo tempo.
+union tipo{
+	short int x;
+	unsigned char c[2];
+};
+No main: union tipo v; v.x = 1;
+--> manipulação de bits: uma union permite fazer acessos controlados a nível de bits.
+
+ENUM: --> enumeração
+enum nome_enum {lista de identificadores};
+ex: enum semana{domingo,segunda,terca};
+no main: enum semana s; s = segunda; Quando printa, mostra o identificador, no caso 1.
+Mas posso definir {domingo =1 ....}
+
+Typedef:
+--> permite que o programador defina um apelido para um tipo existente.
+typedef tipo_existente novo_nome;
+ex: typedef struct cadastro cad;
+
+
+FUNCAO:
+--> Conjunto de comandos que recebe um nome e pode ser chamada em parte do programa quantas vezes forem necessárias.
+tipo nome_funcao(parametros){
+	declarações;
+	comandos;
+	}
+Protótipo:
+int nome(parametros);
+Array so pode ser retorno se estiver dentro de uma estrutura
+Parametro com ponteiro: pode alterar o valor do parametro
+ex soma(&x); 
+parametros por valor ou por referencia(ponteiro)
+Arrays são sempre passados por referência
+Struct como parametro:
+	-por valor(variavel) ou -por referencia(&variavel) Para acesssar (*p).x = 10; ou p->x = 10; p.x--struct Ponto
+
+RECURSAO EM FUNCOES:
+Funcao que chama a si propria.
+-Tem que ter criterio de parada
+-Parametro da chamada recursiva
+ex: int fatorial(int n){
+	if(n == 0) return 1; //critério de parada
+	else return n*fatorial(n-1); //parametro chamada recursiva}
+
+PONTEIROS:
+-->Tipo especial de variavel que armazenam enderecos na memoria.
+tipo *nome; p = &x;
+Operacoes somente com valores inteiros:
+*p =0x5DC //1500
+p++; //1505   p=p+15; //1564   p=p-2; //1556
+int 4 bit, char 1bit, 
+-Ponteiros genericos: pode apontar para todos os tipos de dados
+void *ponteiro;  Para printar: ,*(int*)ponteiro);
+-Ponteiros e arrays:  int *p = vet;
+para printar: p[i] ou *(p+i)
+para acessar: *(vet+i) ou &vet[i]
+-Array de ponteiros: tipo *nome[tamanho];
+int *vet[5];  pvet[0] = &x ; pvet[1] = y
+Para printar: pvet[0] --> &x
+	      pvet[1] -->&y[0]
+	      *pvet[0] --> x 
+	      pvet[1][1] --> y[1]
+-Ponteiro para ponteiro:
+int **p2 = &p; Para printar:
+,**p) -- >x
+Ponteiro para Array:
+vetor p1;  vetor *p2;  int (*p3)[10];  
+Array de ponteiros:
+int*p4[10];
+
+ALOCACAO DINAMICA
+-->Reservas dinamica em tempo de execucao de blocos de memoria usando ponteiros
+
+SIZEOF: 
+-->Retorna o numero de bytes necessarios para colocar aquele tipo
+char 1 byte    int 4 bytes      float 4 bytes     double 8 bytes
+ex: sizeof(int):
+
+MALLOC:
+-->Faz um pedido de memoria e retorna um ponteiro com o inicio do espaco alocado
+ex void* malloc(unsigned int num);
+
+CALLOC: 
+-->Recebe por parametro o n de elementos e o tamanho
+ex: calloc(50,4)
+
+REALLOC:
+-->Serve para alocarou realocar memoria durante a execucao do programa
+ex: realloc(v,400);
+
+ALOCACAO DE MATRIZES:
+-->Um ponteiro para cada dimensao
+ex p =  (int**)malloc(N*sizeof(int*));
+
+ARQUIVO:
+-->Colecao de bytes armazenados em um dispositivo de armazenamento secundário.
+stdio.h
+FILE *nome_ponteiro; --> Ponteiro que controla o fluxo de leitura e escrita dentro de um arquivo.
+-arq de texto: podem ser editados no bloco de notas
+	Dados sao gravados exatamente como seriam impressos na tela
+	Dados sao gravados como caracteres de 8 bits (tabela ASCII)
+	Existe uma etapa de conversao de dados
+-arq binários: nao podem ser editados no bloco de notas
+	Dados gravados exatamente como estao organizados na memoria
+	Nao existe etapa de conversao dos dados
+	Leitura e escrita + rapida
+-Abrir arquivos: FILE *fopen(char *nome,char *modo)
+ex FILE *f; f = fopen("arquivo.txt,"w"): --> se a funcao retornar NULL, ela nao conseguiu abrir o arquivo
+-Caminho absoluto: endereco completo
+ex: f = fopen("C:\\Projetos\\arq.txt","w");
+-Caminho relativo: relativo a pasta do programa
+ex: f = fopen("arquivo.txt","w");
+-Modos:
+r - leitura arq texto , w - escrita arq texto e apaga anterior
+a - escrita e os dados serao add no fim do arquivo
+r+ - leitura e escrita e arq precisa existir
+w+ - leitura e escrita cria o arquivo se nao houver e apaga anterior
+a+ - leitura e escrita, add no final
+Para arq binarios basta acresentar b(rb,w+b..)
+-Fechar arquivos: int fclose(FILE *f); -->retorna 0 caso sucesso
+-Gravar no arquivo:
+	int fputc(char c,FILE *fp); --> escrve UM caractere no arquivo
+		-Retorna EOF se error, e o proprio caractere se sucesso
+		ex for(..){ fputc(texto[i],f);}
+-Ler no arquivo:
+	int fgetc(FILE *FP); -- >lE UM caractere no arquivo
+		-Retorna EOF se error, o e o caractere lido se sucesso
+		ex for(...){c = fgetc(f);  printf("%c",c)};
+toupper(caractere);--> tudo maiusculo biblioteca ctype.h
+int feof(FILE *fp); --> a funcao retorna um valor inteiro igual a zero se ainda nao tiver atingido o final do arquivo.
+int fputs(char *str,FILE *fp); --> EOF se error, um valor diferente de 0 se sucesso, serve para armazenar uma string sem precisar de um for. Pode gravar varias palavras uma depois da outra
+char* fgets(char *str, int tamanho, FILE *fp); -->Se error == NULL, caso sucesso == um ponteiro para o primeiro caractere de str. Só le uma linha por vez
+-Para escrever em um arquivo binário:
+int fwrite(void *buffer, int bytes, int count, FILE *fp):
+>buffer: ponteiro generico para os dados
+bytes:tamanho, em bytes, de cada unidade de dado a ser gravada
+count:total de unidades de dados que devem ser gravadas
+fp: ponteiro para o arquivo
+Retorno--> total de unidades de dados gravadas com sucesso
+-Ler um bloco de bytes: int fread(void *buffer, int bytes, int count, FILE *fp);
+-Gravar dados formatados no arquivo:
+fprintf();-->Escreve na forma formatada de lista
+printf("Tipos de saida",variaveis); //Forma geral printf
+fprintf(FILE *f,"tipos de saída",variaveis); //Forma geral fprintf
+-Ler dados formatados:
+fscanf(); -->Lê uma lista formatada
+fscanf(FILE *f,"tipos de entrada",variaveis);
+Funcao fseek():
+-->Permite realizar operacoes de leitura e escrita randomica
+int fseek(FILE *fp,long numbytes,int origem);
+-fp:ponteiro para o arquivo
+-numbytes:total de bytes a ser pulado a partir da origem
+-origem: a partir de onde os numbytes serao contados
+Retorna 0 se sucesso
+SEEK_SET 0 inicio do arquivo
+SEEK_CUR 1 Ponto atual no arquivo
+SEEK_END 2 Fim do arquivo
+Funcao rewind();
+--> Retorna ao inicio do arquivo
+void rewind(FILE *fp);
+
+PARAMETROS DA FUNCAO MAIN
+MAIN-->funcao principal do programa
+int argc: valor que indica o numero de parametros com os quais a funcao main foi chamada (argc >=1)
+char *argv[]: ponteiro para um vetor contendo "argc" strings. Cada string é um dos parametros para a main()
+argv[0]-->sempre aponta o nome do programa
+atoi()-->converte string para inteiro
+
+BUFFER:
+Toda informação que digitamos no teclado é armazenada em um buffer
+setbuf(stdin,NULL); -->coloca null no buffer do teclado
+
+LOCALIDADE DO COMPUTADOR:
+setlocale();
+char* setlocale(int categoria, const char* local);
+categoria-->é uma dasmacros definidas para localidade
+local--> é o identificador de localidade do sistema especificado.
+Retorna null em caso de error, e se sucesso um ponteiro para uma string contendo a identificação da nova localidade
+Categorias:
+LC_ALL: Afeta todo o local da linguagem
+LC_COLLATE:Afeta as funcoes que trabalham com strings
+LC_CTYPE:Afeta as funcoes que manipulam caracteres
+LC_MONETARY:Afeta a informacao de formatacao monetaria
+LC_NUMERIC: Afeta a formatacao numerica da localidade
+LC_TIME: Afeta a funcao de formatação de data e hora
+Local:
+"C":Para localidade minima da linguagem
+"":localidade-padrao do sistema
+
+CLASSES DE ARMAZENAMENTO:
+-->Conjunto de modificadores que permitem alterar a maneira como o compilador vai armazenar uma variável
+-->São utilizadas para definir o escopo e o tempo de vida das variaveis dentro do programa
+Classe auto:
+-Permite definir variaveis locais
+Classe extern:
+-Permite definir variaveis globais que serao visiveis em mais de um arquivo do programa
+Classe static:
+-Defini variaveis globais e locais(dentro de funcoes)
+-Defini funcao: garante que a funcao seja visivel apenas dentro daquele arquivo.
+Clasee register:
+-Serve para especificar que uma variavel sera muito utilizada e que seria interessante armazena-la no registrador da CPU
+-Fornece acesso mais rapido, quem decide onde vai ser armazenada é o compilador
+-Nao pode utilizar o & e apenas variaveis que ocupem poucos bytes
+
+MODIFICADOR DE TIPO
+VOLATILE: pode ser aplicado a qualquer declaracao de variavel, incluindo estruturas, unioes e enumerações.
+-->Informa ao compilador que aquela variavel poderá ser alterada por outros meios e por esse motivo ela nao deve ser otimizada
+volatile tipo nome_var;
+melhor forma: while(*(volatile int *)&resposta);
+
+PONTEIRO DE FUNCAO
+-->ponteiro que aponta para onde a funcao esta na memoria
+-permite construcao de codigos genericos
+tipo_retornado (*nomedoponteiro)(listadetipos)
+-se o nomedoponteiro nao tiver entre parenteses vai ser uma funcao que retorna um ponteiro, e nao um ponteiro que retorna uma funcao
+-nome de uma funcao é seu endereço na memoria
+
+CAMPOS DE BITS
+-->Trata-se de um tipo especial de membro de estruturas e unioes chamado cammpo de bits ou bitfield
+tipo nome_campo:comprimento; //somente tipo int
+-nao possuem endereços, nem arrays,nem ponteiros
+-nao pode utilizar sizeof
+
+FUNCOES COM NUMERO DE PARAMETROS VARIAVEIS:
+biblioteca stdarg.h
+EX:printf();
+tipoFunc nomeFunc (lista_parametros,...){}
+va_list - tipo usado como parametro para as macros definidas na biblioteca para recuperar os parametros adicionais da funcao
+v_start(lista,ultimo_parametro) - macro que inicializa a variavel lista do va_list com as informacoes necessarias para recuperar os parametros adicionais
+v_arq(lista, tipo_dado) - Macro que retorna o parametro atual contido na variavel lista do tipo va_list, sob a forma do tipo informado em tipo_dado. Em seguida, a macro move a variavel lista para o proximo parametro, se este existir
+va_end(lista) - Essa macro deve ser executada antes da finalizacao da funcao (ou do comando return, se existir).Seu objetivo é destruir a variavel lista de modo apropriado
+
+DIRETIVAS DE COMPILACAO
+--instrucoes que servem para fazer alteracoes no codigo fonte antes de envia-lo para o compilador
+Diretiva #define
+-Sintaxe 1: #define nome
+-Sintaxe 2: #define nomeConst valorConst
+
+TIPO COMPLEXO
+biblioteca complex.h
+-->Oferece suporte para numeros complexos
+--> modifica um tipo de ponto flutuante para que ele se comporte como par de numeros que defina um numero complexo
+_Complex float numero;
+_Complex ou complex
+_Complex_I ou I -- define parte imaginaria
+ex: complex float z = 2.0 + 2.0 *I;
+double cimag(doube complex z) -->Calcula a parte imaginaria de z
+double creal(doube complex z) -->Calcula a parte real de z
+double cabs(doube complex z) -->Calcula o valor absoluto de z
+
+PONTO FLUTUANTE C99
+math.h
+float --> precisao simples
+double --> precisao dupla
+long double --> ponto flutuante estendido
+INFINITY   - Macros que representam o infinito
+-INFINITY  -
+isfinite() --> funcao para testar se um valor é infinito ou nao
+NAN - Macro que representa o valor de que nao é um numero
+isnan() --> funcao para testar e um valor nao é um numero 
+tgmath.h --> funcoes genericas
+
+ARRAY FLEXIVEL
+-->podemos declarar um array sem tamanho se ele for o ultimo item da estrutura(struct)
+-é utilizado atraves de alocação dinamica
+
+FUNCAO EM LINHA
+-->Neste cado ao inves de gerar o codigo para chamar a funcao, o compilador ira inserir o corpo completo da funcao em cada lugar do codigo em que a funcao for chamada
+inline tipo nomefuncao(parametros){}
+
+PALAVRA CHAVE RESTRICT
+--> limita os efeitos do aliasing sobre ponteiros, otimizando o cache
+aliasing--varios ponteiros na mesma direcao
+int * restrict y;
+
+INICIALIZACAO DESIGNADA
+--> Permite inicializar posicoes especificas de um array ou apenas alguns dos campos de uma estrutura ou uniao, deixando o resto das posicoes e doas campos sem inicializadores explicitos
+[indice] = valor
+ex: int vetor[5] = {[2]=10,[4]=20};
+
+LITERAIS COMPOSTOS
+-Parecido com modelador de tipos cast
+tipo variavel = {dados};
+composicao literal: (tipo) {dados};
+
+FUNCAO STRTOK
+-->Permite dividir uma string STR em um conjunto de substrings com base em um conjunto de delimitadores DELIM
+char* strtok(char* STR, char* DELIM);
+Retorna apenas umas substring

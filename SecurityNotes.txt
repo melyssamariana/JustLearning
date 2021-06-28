@@ -1,0 +1,141 @@
+Curse Guide Forense Informatic to salve a shot of a hard disk
+Part1
+interveniente imediato
+primeiro interveniente
+analista forense
+dfir
+cadeia de custódia --> preservar a parte pertinente
+kali
+metodologias nist
+computer security incident handling guide
+guide to integrating forensic techniques into incident response
+guidelines on mobile device forensics
+nij
+assinatura hash
+SHA-2
+pentesting
+gerar o hash --> workcopy
+ZFS
+SOPs: Standard Operating
+
+paladim
+
+Part2
+
+/sys --> diretorio que tem informação do sistema
+/dev --> arquivos do dispositivo (magic number)
+/proc -->
+
+cd /dev
+cd disk/
+ls
+cd by-id/
+ls
+ls
+
+
+entrada-->stdio
+saida -->stout
+      --> stderr
+
+sort
+unir
+sed
+pipe(umnamed fifo)
+	nomed fifo --> arquivo que representa um pipe
+tee(comando)
+
+operação simples de dump com dd:
+dd if=dispositivo of=arquivodesaida bs=tambloco
+
+operação simples de dump com dd, disco danificado:
+dd if=dispositivo of=arquivodesaida conv=sync,noerror
+
+Firma MD5:
+md5sum nomeimagem > nomeimagem.md5
+
+Firma SHA-512:
+sha512sum nomeimagem > nomeimagem.sha512
+
+Firma SHA-256:
+sha512sum nomeimagem > nomeimagem.sha256
+
+operação de dump com dd, compressão gzip
+| gzip -c > arquivodesaida.gz
+
+compressao com bzip2
+| bzip2 -9f > arquivodesaida...
+
+operação de dump com dd, maquinas remota:
+
+
+HOF --> CONFERE O HASH(nao usa quando o arquivo nao pode ser lido)
+
+dc3dd --> lê o disco e calcula os hash
+
+
+ead.emc.ufg.br
+
+___________________________________________________________________
+cd /dev/disk/by-id
+ls
+(INSERIR PENDRIVE 64G)
+ls
+mkdir /destino1
+mout nomedapartição /destino1/
+df
+mkdir /destino2
+mout ___________________________________________________________________
+cd /dev/disk/by-id
+ls
+(INSERIR PENDRIVE 64G)
+ls
+
+Part3
+Ferramentas DES
+Dewan
+ZFS
+Iogtek --> Sff8087 2x4
+Bit flipping
+raid hole
+arquivos grandes (2-3t)
+scrub
+pools
+snapshot
+ewfinfo-->mostra os metadados
+ewfexport-->conversor entre tipos de formatos EWF e exportador de raw.
+ewfrtpoty arquivoimagem.e01 -f raw > imagem.img
+kpartx -va imagem.img --> cria um dispositivo virtual para cada partição
+kpartx-l imagem.img ---> lista as partições
+kpartx -k imagem.img --> apaga dispositivos
+CONVERSAO DE IMAGEM PARA USO EM VIRTUAL BOX:
+VBoxManage convert fromraw discoraw.img discoVHD.
+	vhd --format VHD
+DATA CARVING em uma imagem ou dump:
+foremost -t tipo -i imagem -o saida
+ANALISE DE METADATOS
+exiftool: informação dos metadatos de um arquivo
+stats:Informação dos metadatos em um sistemas de arquivos
+FERRAMENTAS UTEIS:
+vol:analise forense de memoria RAM y partições de swap
+xxd:Permite gerar dump hexadecimais de arquivos binarios
+pdfresurect:permite analise forense de arquivos PDF
+p0f:fingerprinting passivo, para identificar ataques Man in the Middle
+__________________________________________________________________________________
+
+dmesg
+mount /dev/sda1 /mnt
+cd /mnt/
+ls
+cat nome usb.log
+sha256sum nomeusb.img
+mkdir trabalho
+cp nomeusb.img trabalho/
+kpartx -va nomeusb.img
+ls /dev/mapper/
+mount /dev/mapper/loop1p1(cancela)
+mkdir /mnt3
+mount /dev/mapper/loop1p1 /mnt3 -o ro
+cd /mnt3/
+ls
+

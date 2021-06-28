@@ -1,0 +1,111 @@
+CORES NO PYTHON
+\033[style;text,backm
+Style --> comportamento (estilo)
+	0: sem estilo
+	1: Bold (negrito)
+	4: underline (sublinha)
+	7: negative (inverte as conf)
+Text --> cor do texto
+	30: branco
+	31: vermelho
+	32: verde
+	33: amarelo
+	34: azul
+	35: lilás
+	36: verde-água
+	37: cinza
+Back --> cor de fundo
+	40: branco
+	41: vermelho
+	42: verde
+	43: amarelo
+	44: azul
+	45: lilás
+	46: verde-água
+	47: cinza
+
+Ex: print('\033[0;31;46mOlá mundo\033[n')
+sem estilo, letra vermelha, fundo verde água
+
+ESTRUTURAS
+
+for contador in range(1,10):  #range:intervalo começa em 1, termina em 9
+	comandos
+comando que aparece após o laço final
+
+Se colocar ... range(1,10,2): começa em 1, termina em 9, de dois em dois
+________________________________________________________________________________
+while x !=0:
+	acontece algo
+comando que aparece após o laço final
+
+Se tiver um if dentro de um laço:
+  if(x=0):
+      break --> sai do laço
+
+
+print('A quantidade de %s eh %d' %(nome , quant)) ---Python 2
+print('A quantidade de {} eh {}'.format(nome,quant)) --Python 3
+print(f'A quantidade de {nome} eh {quant}') --Python 3.6
+
+LIST:
+DIFERENÇA: TUPLAS = sao imutáveis
+	   LISTAS = sao mutáveis
+lista = pode ser qualquer nome
+lista.append('biscoito') ==> cria mais um elemento e add a lista
+lista.insert(0,'suco') --> insere na posição 0 o suco, e os outro itens chegam pro lado.
+del lista[3] --> elimina item 3
+lista.pop(3) --> elimina item 3
+lista.remove('pizza')
+ OBS OS 3 ANTERIORES REPOE OS ITENS DO LADO
+lista.pop() --> remove ultimo item
+OUTRO JEITO DE DECLARAR LISTAS (função list)
+lista = list(range(4,11))
+lista.sort() --> ordena os valores em ordem crescente
+lista.sort(reverse=True) --> ordena em ordem decrescente
+len(lista) --> numero de elementos da lista
+
+
+
+TEXT:
+frase: cada letra vai receber um índice (incluindo os espaços)
+FATIAMENTO : frase[9] --> mostra a letra 9
+	     frase[9:21] --> mostra da letra 9 á 21
+	     frase[9:21:2]--> mostra da letra 9 á 21,pulando de dois em dois
+	     frase[9::3] -- > começa no 9 ate o final,pulando de 3 em 3
+len(frase) --> mostra o comprimento da frase
+frase.count('o') --> mostra a quantidade de letra o
+	   ('o',0,13) --> mostra a quantidade o entre o espaço 0 e 13
+frase.find('fra') --> encontra uma parte e vai dizer onde começa
+	se coloca dentro uma string que não existe retorna -1
+frase.replace('UmaPalavra','Outra') --> substitui visualmente
+frase.upper() --> todas em maiusculas
+frase.lower() --> deixa tudo em minusculo
+frase.capitalize() --> deixa tudo em minusculo e a primeira letra em maiusculo
+frase.strip() --> tira espaços do começo e do final
+frase.rstrip() --> remove os ultimos espaços (rigth-direita)
+frase.lstrip() --> remove os primeiros espaços (left-esquerda)
+frase.split() --> onde tem espaço ele remove, e divide cada palavra em uma string (gera uma lista de uma cadeia de caracteres)
+'-'.join(frase) --> junta todos os elementos e vai usar o tracinho pra separar
+
+TUPLAS:
+print(lanche[2]) mostra o lache do lugar 2
+print(lanche[0:2]) mostra o lanche 0  e o 1
+print(lanche[1:]) vai do 1 ate o final
+print(lanche[-1]) mostra o ultimo lanche
+len(lanche) mostra quantos lanches tem dentro da tupla lanche
+________________________________________________
+for c in lanche:  #c= nome da comida 0, a cada loop incrementa 1, e a comida muda
+	print(c)
+quando acabar os itens da tupla lanche, sai do laço.
+ lanche () --> tupla
+ lanche [] --> lista
+ lanche {} --> dicionário
+
+ OUTRO JEITO DE USAR FOR:
+for cont in range(0,len(lanche)):
+	comandos
+	print(f'vou comer {lanche[count]}'
+_______________________________________________
+Se tiver 2 tuplas a e b e quiser juntar:
+c = b + a

@@ -1,0 +1,68 @@
+<br/> quebra de linha
+&nbsp; espaço
+<wbr/> quebra as palavras 
+&shy; quebra palavras e coloca um hífen
+<b> negrito
+<i> italico
+<del> risco no meio da palavra
+<figure> da significado semantico a imagens
+<figurecaption> legenda da imagem
+<ol> lista ordenada
+<ul> lista nao ordenada
+<li> item da lista
+ SITE PREFIXR
+ google font
+
+SIMBOLOS ESPECIAIS
+&lt; <
+&gt; >
+&le; menor igual
+&ge; maior igual
+&copy; c zinho
+&reg; marca registrada
+&trade; TM
+SIMBOLOS MONETARIOS
+&pound libra
+&yen; japones acho
+&euro; euro
+SIMBOLOS MATEMATICOS
+&permil; porcentagem com duas bolinhas
+&sum; soma E da soma
+&infin; infinito
+&times; x VEZES
+&plusmn; mais ou menos
+&oplus; + dentro de uma circunferencia
+&radic; raiz
+&ne; diferente
+SIMBOLOS LETRAS GREGAS
+&delta; ou &Delta;
+&Lambda; 
+&omega;
+&phi;
+SIMBOLOS
+&larr; seta pra esquerda
+&rarr; seta pra direita
+&uarr; seta pra cima
+&darr; seta pra baixo
+&harr; seta para os dois lados
+SIMBOLOS NAIPES DAS CARTAS
+&spades;
+&clubs;
+&hearts;
+&diams;
+
+CSS
+<span style="nomedoestilo:referencia">texto</span>
+Estilos:
+font-weight ex bold, normal
+text-decoration ex sublinhado
+style="nomedoestilo:referencia"
+	Estilos: text-align: center, left,justify
+<sup> sobrescrito tipo elevado a dois
+<sub> o numero ou palavra vai para baixo
+<code> formata em formato de código
+<pre> considera todos os espaços
+modos de colorir a fonte:
+#00000
+rgb(0,0,0)
+rgba(0,0,0,0)

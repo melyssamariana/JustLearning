@@ -1,0 +1,2 @@
+# JustLearning
+main concepts
